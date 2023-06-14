@@ -1,1 +1,4 @@
 rootProject.name = 'novel'
+include 'monolithic'
+include 'msa'
+
