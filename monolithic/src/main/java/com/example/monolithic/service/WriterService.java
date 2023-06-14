@@ -21,10 +21,18 @@ public class WriterService {
     @Transactional
     public Long registerWriter(RegisterWriterRequestDto request) {
 
+        checkWriterExist(request);
+
         return this.writerRepository.save(Writer.builder()
                                                 .name(request.getName())
                                                 .createdAt(LocalDateTime.now())
                                                 .build())
                                     .getId();
+    }
+
+    private void checkWriterExist(RegisterWriterRequestDto request) {
+        if (this.writerRepository.countByEmail(request.getEmail()) > 0) {
+            throw new RuntimeException("이미 존재하는 작가입니다.");
+        }
     }
 }

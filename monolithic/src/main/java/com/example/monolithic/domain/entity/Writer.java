@@ -2,7 +2,10 @@ package com.example.monolithic.domain.entity;
 
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +13,6 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Builder
 @Entity
 public class Writer {
