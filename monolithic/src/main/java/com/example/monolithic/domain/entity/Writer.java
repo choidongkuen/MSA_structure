@@ -22,6 +22,9 @@ public class Writer {
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
+
     @Column(name = "CREATED_AT")
     private LocalDateTime createdAt;
 }
