@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/novel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/novel.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/monolithic/novel.monolithic.main.iml" filepath="$PROJECT_DIR$/.idea/modules/monolithic/novel.monolithic.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/msa/novel.msa.main.iml" filepath="$PROJECT_DIR$/.idea/modules/msa/novel.msa.main.iml" />
     </modules>
   </component>
 </project>

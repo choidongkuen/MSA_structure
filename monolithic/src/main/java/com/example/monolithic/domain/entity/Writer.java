@@ -2,16 +2,16 @@ package com.example.monolithic.domain.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
+@Builder
 @Entity
 public class Writer {
 
