@@ -4,4 +4,21 @@ spring:
     username: sa
     password: 1111
     driver-class-name: org.h2.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
+springdoc:
+  packages-to-scan: com.example
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    tags-sorter: alpha
+    operations-sorter: alpha
+    path: api-ui.html
+  api-docs:
+    path: /api-docs/json
+    groups:
+      enabled: true
+  cache:
+    disabled: true
