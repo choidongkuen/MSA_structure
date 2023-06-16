@@ -27,7 +27,7 @@ class WriterServiceTest {
     private WriterService writerService;
 
     @Test
-    @DisplayName("작가 등록 성공")
+    @DisplayName("작가 등록 서비스 성공")
     void registerWriterInSuccess() {
 
         // given
