@@ -25,6 +25,7 @@ public class WriterService {
 
         return this.writerRepository.save(Writer.builder()
                                                 .name(request.getName())
+                                                .email(request.getEmail())
                                                 .createdAt(LocalDateTime.now())
                                                 .build())
                                     .getId();
