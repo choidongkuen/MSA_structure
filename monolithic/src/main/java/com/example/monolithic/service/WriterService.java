@@ -1,7 +1,9 @@
 package com.example.monolithic.service;
 
 import com.example.monolithic.domain.entity.Writer;
+import com.example.monolithic.domain.repository.WebBookRepository;
 import com.example.monolithic.domain.repository.WriterRepository;
+import com.example.monolithic.dto.RegisterWebBookRequestDto;
 import com.example.monolithic.dto.RegisterWriterRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,17 +19,14 @@ import java.time.LocalDateTime;
 public class WriterService {
 
     private final WriterRepository writerRepository;
+    private final WebBookRepository webBookRepository;
 
     @Transactional
     public Long registerWriter(RegisterWriterRequestDto request) {
 
         checkWriterExist(request);
 
-        return this.writerRepository.save(Writer.builder()
-                                                .name(request.getName())
-                                                .email(request.getEmail())
-                                                .createdAt(LocalDateTime.now())
-                                                .build())
+        return this.writerRepository.save(request.ToEntity())
                                     .getId();
     }
 
@@ -35,5 +34,10 @@ public class WriterService {
         if (this.writerRepository.countByEmail(request.getEmail()) > 0) {
             throw new RuntimeException("이미 존재하는 작가입니다.");
         }
+    }
+
+    public Long registerWebBook(RegisterWebBookRequestDto request) {
+
+        return this.
     }
 }

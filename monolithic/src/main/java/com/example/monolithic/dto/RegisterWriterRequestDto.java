@@ -1,10 +1,12 @@
 package com.example.monolithic.dto;
 
+import com.example.monolithic.domain.entity.Writer;
 import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -20,4 +22,12 @@ public class RegisterWriterRequestDto {
 
     @Email
     private String email;
+
+    public Writer ToEntity() {
+        return Writer.builder()
+                     .name(name)
+                     .email(email)
+                     .createdAt(LocalDateTime.now())
+                     .build();
+    }
 }
