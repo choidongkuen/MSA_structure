@@ -5,11 +5,11 @@ import com.example.monolithic.domain.repository.WebBookRepository;
 import com.example.monolithic.domain.repository.WriterRepository;
 import com.example.monolithic.dto.RegisterWebBookRequestDto;
 import com.example.monolithic.dto.RegisterWriterRequestDto;
+import com.example.monolithic.exception.ErrorCode;
+import com.example.monolithic.exception.WriterException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
 
 /**
  * writer 에 대한 CRUD
@@ -32,12 +32,17 @@ public class WriterService {
 
     private void checkWriterExist(RegisterWriterRequestDto request) {
         if (this.writerRepository.countByEmail(request.getEmail()) > 0) {
-            throw new RuntimeException("이미 존재하는 작가입니다.");
+            throw new WriterException(ErrorCode.WRITER_ALREADY_EXIST);
         }
     }
 
-    public Long registerWebBook(RegisterWebBookRequestDto request) {
+    @Transactional
+    public Long registerWebBook(Long id, RegisterWebBookRequestDto request) {
 
-        return this.
+        Writer writer = this.writerRepository.findById(id)
+                                             .orElseThrow(() -> new WriterException(ErrorCode.WRITER_NOT_FOUND));
+
+        return this.webBookRepository.save(request.ToEntity(writer))
+                                     .getId();
     }
 }
