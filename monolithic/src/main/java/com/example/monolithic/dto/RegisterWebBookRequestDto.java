@@ -6,7 +6,6 @@ import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -28,7 +27,6 @@ public class RegisterWebBookRequestDto {
                       .writer(writer)
                       .title(title)
                       .description(description)
-                      .createdAt(LocalDateTime.now())
                       .build();
     }
 }

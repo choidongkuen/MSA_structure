@@ -6,7 +6,6 @@ import lombok.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -27,7 +26,6 @@ public class RegisterWriterRequestDto {
         return Writer.builder()
                      .name(name)
                      .email(email)
-                     .createdAt(LocalDateTime.now())
                      .build();
     }
 }
