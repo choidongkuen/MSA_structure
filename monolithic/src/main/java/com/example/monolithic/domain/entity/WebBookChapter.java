@@ -17,6 +17,10 @@ import javax.persistence.*;
 @Table(name = "web_book_chapter")
 public class WebBookChapter extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "episode", nullable = false)
     private Integer episode;
 
