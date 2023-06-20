@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Slf4j
 @Getter
@@ -17,12 +14,13 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "web_book_chapter")
 public class WebBookChapter extends BaseEntity {
 
-    @Column(name = "episode")
+    @Column(name = "episode", nullable = false)
     private Integer episode;
 
-    @Column(name = "chapter_name")
+    @Column(name = "chapter_name", nullable = false)
     private String name;
 
     @Column(name = "description")

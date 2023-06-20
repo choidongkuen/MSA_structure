@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.time.LocalDateTime;
+import javax.persistence.Table;
 
 
 @Getter
@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "writer")
 public class Writer extends BaseEntity {
 
     @Column(name = "name", nullable = false)
@@ -23,7 +24,4 @@ public class Writer extends BaseEntity {
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
 }
