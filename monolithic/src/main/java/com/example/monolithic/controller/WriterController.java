@@ -28,7 +28,7 @@ public class WriterController {
             @ApiResponse(responseCode = "201", description = "[작가 등록 성공]"),
             @ApiResponse(responseCode = "400", description = "[작가 등록 실패]")
     })
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Long> registerWriter(
             @Valid @RequestBody RegisterWriterRequestDto request
     ) {
@@ -54,7 +54,7 @@ public class WriterController {
             @ApiResponse(responseCode = "400", description = "[웹 소설 챕터 등록 실패]")
     })
     @PostMapping("/{writerId}/webBook/{webBookId}")
-    public ResponseEntity<Long> registerWebBookCapter(
+    public ResponseEntity<Long> registerWebBookChapter(
             @PathVariable(name = "writerId") Long writerId,
             @PathVariable(name = "webBookId") Long webBookId,
             @Valid @RequestBody RegisterWebBookChapterRequestDto request
