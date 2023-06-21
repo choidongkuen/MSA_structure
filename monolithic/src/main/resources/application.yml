@@ -43,3 +43,6 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
   file:
     name: logs/application.log
+
+encrypt:
+  key: ${ENCRYPT_KEY}
