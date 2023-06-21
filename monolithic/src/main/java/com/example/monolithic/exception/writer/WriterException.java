@@ -1,9 +1,8 @@
-package com.example.monolithic.exception;
+package com.example.monolithic.exception.writer;
 
-import lombok.AllArgsConstructor;
+import com.example.monolithic.exception.ErrorCode;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public class WriterException extends RuntimeException {
 

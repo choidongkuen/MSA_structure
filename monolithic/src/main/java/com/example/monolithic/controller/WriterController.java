@@ -9,15 +9,17 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@Slf4j
 @RequestMapping("/api/v1/writer")
 @RequiredArgsConstructor
-@Tag(name = "Write", description = "작가 API document")
+@Tag(name = "Writer", description = "작가 API document")
 @RestController
 public class WriterController {
 
@@ -28,7 +30,7 @@ public class WriterController {
             @ApiResponse(responseCode = "201", description = "[작가 등록 성공]"),
             @ApiResponse(responseCode = "400", description = "[작가 등록 실패]")
     })
-    @PostMapping("")
+    @PostMapping()
     public ResponseEntity<Long> registerWriter(
             @Valid @RequestBody RegisterWriterRequestDto request
     ) {

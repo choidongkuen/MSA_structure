@@ -9,7 +9,7 @@ import com.example.monolithic.dto.RegisterWebBookChapterRequestDto;
 import com.example.monolithic.dto.RegisterWebBookRequestDto;
 import com.example.monolithic.dto.RegisterWriterRequestDto;
 import com.example.monolithic.exception.ErrorCode;
-import com.example.monolithic.exception.WriterException;
+import com.example.monolithic.exception.writer.WriterException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

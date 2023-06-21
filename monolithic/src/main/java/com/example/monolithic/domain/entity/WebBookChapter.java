@@ -30,6 +30,9 @@ public class WebBookChapter extends BaseEntity {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "price")
+    private Long price;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private WebBook webBook;
 }
