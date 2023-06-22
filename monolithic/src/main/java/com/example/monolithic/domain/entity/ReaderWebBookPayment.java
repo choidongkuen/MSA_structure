@@ -14,7 +14,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ReaderWebBookPayment {
+@Table(name = "reader_web_book_payment")
+public class ReaderWebBookPayment extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
