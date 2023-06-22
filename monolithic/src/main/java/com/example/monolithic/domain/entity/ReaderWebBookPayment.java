@@ -22,7 +22,7 @@ public class ReaderWebBookPayment extends BaseEntity {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private WebBook webBook;
+    private WebBookChapter webBookChapter;
 
     @Column(name = "payment_amount")
     private Integer paymentAmount;

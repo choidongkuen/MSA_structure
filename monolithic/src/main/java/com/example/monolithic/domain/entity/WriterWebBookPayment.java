@@ -22,7 +22,13 @@ public class WriterWebBookPayment extends BaseEntity {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private WebBook webBook;
+    private WebBookChapter webBookChapter;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private ReaderWebBookPayment readerWebBookPayment;
+    
+    @Column(name = "is_withdraw")
+    private Boolean isWithdraw;
 
     @Column(name = "payment_amount")
     private Integer paymentAmount;
