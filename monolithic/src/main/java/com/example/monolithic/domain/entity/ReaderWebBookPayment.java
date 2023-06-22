@@ -14,20 +14,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "reader")
-public class Reader extends BaseEntity {
+public class ReaderWebBookPayment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @OneToOne(fetch = FetchType.LAZY)
+    private WebBook webBook;
 
-    @Column(name = "registration_number")
-    private String registrationNumber;
-
-    public void encryptRegistrationNumber(String encryptedRegistrationNumber) {
-        this.registrationNumber = registrationNumber;
-    }
+    @Column(name = "payment_amount")
+    private Integer paymentAmount;
 }
