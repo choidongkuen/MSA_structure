@@ -1,6 +1,8 @@
 package com.example.monolithic.controller;
 
 import com.example.monolithic.dto.RegisterReaderRequestDto;
+import com.example.monolithic.dto.WebBookChapterDto;
+import com.example.monolithic.dto.WebBookDto;
 import com.example.monolithic.service.ReaderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -10,12 +12,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @RequestMapping("/api/v1/reader")
@@ -36,5 +36,19 @@ public class ReaderController {
             @Valid @RequestBody RegisterReaderRequestDto request
     ) {
         return new ResponseEntity<>(this.readerService.registerReader(request), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "[독자 웹 소설 챕터 조회 컨트롤러]", description = "[This is a getWebBookChapterListController]")
+    @GetMapping("/webBook/{webBookId}/chapters")
+    public ResponseEntity<List<WebBookChapterDto>> getWebBookChapterList(
+            @PathVariable(name = "webBookId") Long webBookId
+    ) {
+        return new ResponseEntity<>(this.readerService.getWebBookChapterList(webBookId), HttpStatus.OK);
+    }
+
+    @Operation(summary = "[독자 웹 소설 조회 컨트롤러]", description = "[This is a getWebBookListController]")
+    @GetMapping("/webBook")
+    public ResponseEntity<List<WebBookDto>> getWebBookList() {
+        return new ResponseEntity<>(this.readerService.getWebBookList(), HttpStatus.OK);
     }
 }
