@@ -31,7 +31,7 @@ public class WebBookChapter extends BaseEntity {
     private String description;
 
     @Column(name = "price")
-    private Long price;
+    private Integer price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private WebBook webBook;

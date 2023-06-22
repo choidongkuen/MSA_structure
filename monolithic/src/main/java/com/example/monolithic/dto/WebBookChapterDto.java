@@ -18,7 +18,7 @@ public class WebBookChapterDto {
 
     private String description;
 
-    private Long price;
+    private Integer price;
 
     private String webBookTitle;
 

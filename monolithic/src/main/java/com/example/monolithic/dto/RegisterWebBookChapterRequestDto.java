@@ -28,10 +28,14 @@ public class RegisterWebBookChapterRequestDto {
     @Size(max = 255)
     private String description;
 
+    @NotNull
+    private Integer price;
+
     public WebBookChapter ToEntity(WebBook webBook) {
         return WebBookChapter.builder()
                              .episode(episode)
                              .name(name)
+                             .price(price)
                              .description(description)
                              .webBook(webBook)
                              .build();

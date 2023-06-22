@@ -1,5 +1,6 @@
 package com.example.monolithic.controller;
 
+import com.example.monolithic.dto.CreateReaderWebBookPaymentRequestDto;
 import com.example.monolithic.dto.RegisterReaderRequestDto;
 import com.example.monolithic.dto.WebBookChapterDto;
 import com.example.monolithic.dto.WebBookDto;
@@ -41,7 +42,7 @@ public class ReaderController {
     @Operation(summary = "[독자 웹 소설 챕터 조회 컨트롤러]", description = "[This is a getWebBookChapterListController]")
     @GetMapping("/webBook/{webBookId}/chapters")
     public ResponseEntity<List<WebBookChapterDto>> getWebBookChapterList(
-            @PathVariable(name = "webBookId") Long webBookId
+            @PathVariable(value = "webBookId") Long webBookId
     ) {
         return new ResponseEntity<>(this.readerService.getWebBookChapterList(webBookId), HttpStatus.OK);
     }
@@ -50,5 +51,24 @@ public class ReaderController {
     @GetMapping("/webBook")
     public ResponseEntity<List<WebBookDto>> getWebBookList() {
         return new ResponseEntity<>(this.readerService.getWebBookList(), HttpStatus.OK);
+    }
+
+    @Operation(summary = "[독자의 웹 소설 챕터 결제 컨트롤러]", description = "[This is a readerPayWebBookChapterController]")
+    @PostMapping("{readerId}/pay")
+    public ResponseEntity<Long> readerPaymentWebBookChapter(
+            @PathVariable(value = "readerId") Long readerId,
+            @RequestBody CreateReaderWebBookPaymentRequestDto request
+    ) {
+        return new ResponseEntity<>(this.readerService.createReaderPaymentWebBookChapter(readerId, request), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "[독자가 결제한 웹 소설 챕터 조회 컨트롤러]", description = "[This is a getReader's WebBookChapterListController]")
+    @GetMapping("{readerId}/webBook/{webBookChapterId}")
+    public ResponseEntity<List<WebBookChapterDto>> getReaderWebBookChapterList(
+            @PathVariable(value = "readerId") Long readerId,
+            @PathVariable(value = "webBookChapterId") Long webBookChapterId
+    ) {
+        return new ResponseEntity<>(
+                this.readerService.getWebBookChapterList(readerId, webBookChapterId), HttpStatus.OK);
     }
 }

@@ -21,8 +21,11 @@ public class ReaderWebBookPayment extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private WebBookChapter webBookChapter;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Reader reader;
 
     @Column(name = "payment_amount")
     private Integer paymentAmount;
