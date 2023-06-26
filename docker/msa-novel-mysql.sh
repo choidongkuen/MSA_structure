@@ -1,0 +1,1 @@
+docker run --name msa-novel-mysql -e MYSQL_ROOT_PASSWORD=msa -d -p 3304:3306 mysql:latest

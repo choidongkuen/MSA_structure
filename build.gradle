@@ -40,8 +40,8 @@ subprojects {
         implementation 'com.mysql:mysql-connector-j:8.0.31'
 
         // open feign
-        implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '4.0.3'
-        
+        implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '3.1.7'
+
 
         // swagger
         implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'

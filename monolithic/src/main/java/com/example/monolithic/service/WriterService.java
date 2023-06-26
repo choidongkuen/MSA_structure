@@ -30,7 +30,7 @@ public class WriterService {
 
         checkWriterExist(request);
 
-        return this.writerRepository.save(request.ToEntity())
+        return this.writerRepository.save(request.toEntity())
                                     .getId();
     }
 
