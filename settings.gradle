@@ -1,4 +1,6 @@
 rootProject.name = 'novel'
 include 'monolithic'
-include 'msa'
+include 'user-api'
+include 'payment-api'
+include 'webbook-api'
 
