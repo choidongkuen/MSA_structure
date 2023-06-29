@@ -45,3 +45,9 @@ logging:
 
 encrypt:
   key: ${ENCRYPT_KEY}
+
+external-api:
+  webbook:
+    url: http://localhost:8092
+  payment:
+    url: http://localhost:8090
