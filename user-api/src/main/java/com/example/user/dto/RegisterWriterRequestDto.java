@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class RegisterWriterRequestDto {
 
-    @Size(min = 0, max = 255)
+    @Size(max = 255)
     @NotBlank
     private String name;
 

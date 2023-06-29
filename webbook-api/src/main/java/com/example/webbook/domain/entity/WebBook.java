@@ -1,4 +1,4 @@
-package com.example.payment.domain;
+package com.example.webbook.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,12 +14,20 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class WebBookPayment {
+@Table(name = "web_book")
+public class WebBook extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "amount")
-    private Long amount;
+    @Column(name = "title")
+    private String title;
+
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "writer_id")
+    private Long writer;
 }
