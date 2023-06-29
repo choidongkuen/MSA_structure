@@ -1,9 +1,11 @@
 package com.example.user.service;
 
 import com.example.user.client.WebBookClient;
+import com.example.user.client.dto.RegisterWebBookChapterRequestClientDto;
 import com.example.user.client.dto.RegisterWebBookRequestClientDto;
 import com.example.user.domain.entity.Writer;
 import com.example.user.domain.repository.WriterRepository;
+import com.example.user.dto.RegisterWebBookChapterRequestDto;
 import com.example.user.dto.RegisterWebBookRequestDto;
 import com.example.user.dto.RegisterWriterRequestDto;
 import com.example.user.exception.ErrorCode;
@@ -34,8 +36,7 @@ public class WriterService {
     @Transactional
     public Long registerWebBook(Long writerId, RegisterWebBookRequestDto request) {
 
-        Writer writer = this.writerRepository.findById(writerId)
-                                             .orElseThrow(() -> new WriterException(ErrorCode.WRITER_NOT_FOUND));
+        checkWriterExist(writerId);
 
         return this.webBookClient.registerWebBook(
                 RegisterWebBookRequestClientDto.builder()
@@ -44,5 +45,26 @@ public class WriterService {
                                                .writer(writerId)
                                                .build()
         );
+    }
+
+    @Transactional
+    public Long registerWebBookChapter(Long writerId, Long webBookId, RegisterWebBookChapterRequestDto request) {
+
+        checkWriterExist(writerId);
+
+        return this.webBookClient.registerWebBookClient(
+                webBookId,
+                RegisterWebBookChapterRequestClientDto.builder()
+                                                      .title(request.getTitle())
+                                                      .price(request.getPrice())
+                                                      .episode(request.getEpisode())
+                                                      .description(request.getDescription())
+                                                      .build()
+        );
+    }
+
+    private void checkWriterExist(Long writerId) {
+        Writer writer = this.writerRepository.findById(writerId)
+                                             .orElseThrow(() -> new WriterException(ErrorCode.WRITER_NOT_FOUND));
     }
 }

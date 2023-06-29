@@ -20,7 +20,7 @@ public class RegisterWebBookChapterRequestDto {
 
     @NotBlank
     @Size(max = 255)
-    private String name;
+    private String title;
 
     @NotBlank
     @Size(max = 255)

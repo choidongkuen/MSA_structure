@@ -1,4 +1,4 @@
-package com.example.user.client.dto;
+package com.example.webbook.dto;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterWebBookChapterRequestClientDto {
+public class RegisterWebBookChapterRequestDto {
 
     private Integer episode;
 
@@ -17,4 +17,3 @@ public class RegisterWebBookChapterRequestClientDto {
 
     private Integer price;
 }
-

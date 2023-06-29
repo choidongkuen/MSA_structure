@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.dto.RegisterWebBookChapterRequestDto;
 import com.example.user.dto.RegisterWebBookRequestDto;
 import com.example.user.dto.RegisterWriterRequestDto;
 import com.example.user.service.WriterService;
@@ -12,6 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+/**
+ * 작가 등록 -> http://localhost:8091/writer
+ * 작가 웹 소설 등록 -> http://localhost:8091/writer/{writerId}/webBook
+ * 작가 웹 소설 챕터 등록 -> http://localhost:8091/writer/{writerId}/webBook/{webBookId}
+ */
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,5 +44,15 @@ public class WriterController {
             @RequestBody RegisterWebBookRequestDto request
     ) {
         return new ResponseEntity<>(this.writerService.registerWebBook(writerId, request), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "[웹 소설 챕터 등록 컨트롤러]", description = "[This is a registerWebBookChapterController]")
+    @PostMapping("/{writerId}/webBook/{webBookId}")
+    public ResponseEntity<Long> registerWebBookChapter(
+            @PathVariable(name = "writerId") Long writerId,
+            @PathVariable(name = "webBookId") Long webBookId,
+            @RequestBody RegisterWebBookChapterRequestDto request
+    ) {
+        return new ResponseEntity<>(this.writerService.registerWebBookChapter(writerId, webBookId, request), HttpStatus.CREATED);
     }
 }

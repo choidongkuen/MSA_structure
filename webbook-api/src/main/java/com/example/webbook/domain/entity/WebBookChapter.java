@@ -25,7 +25,7 @@ public class WebBookChapter extends BaseEntity {
     private Integer episode;
 
     @Column(name = "name")
-    private String name;
+    private String title;
 
     @Column(name = "description")
     private String description;
