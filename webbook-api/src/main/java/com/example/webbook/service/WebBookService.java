@@ -4,6 +4,7 @@ import com.example.webbook.domain.entity.WebBook;
 import com.example.webbook.domain.entity.WebBookChapter;
 import com.example.webbook.domain.repository.WebBookChapterRepository;
 import com.example.webbook.domain.repository.WebBookRepository;
+import com.example.webbook.dto.GetAllWebBooksResponseDto;
 import com.example.webbook.dto.RegisterWebBookChapterRequestDto;
 import com.example.webbook.dto.RegisterWebBookRequestDto;
 import com.example.webbook.exception.ErrorCode;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -42,5 +45,20 @@ public class WebBookService {
                               .title(request.getTitle())
                               .build()
         ).getId();
+    }
+
+    @Transactional(readOnly = true)
+    public Object getAllWebBooksAndWebBookChapter() {
+
+        return this.webBookRepository.findAll().stream()
+                                     .map(webBook -> GetAllWebBooksResponseDto.builder()
+                                                                              .title(webBook.getTitle())
+                                                                              .description(webBook.getDescription())
+                                                                              .writer(webBook.getWriter())
+                                                                              .webBookChapters(webBookChapterRepository.findByWebBook(webBook).stream()
+                                                                                                                       .map(WebBookChapter::from)
+                                                                                                                       .collect(Collectors.toList()))
+                                                                              .build())
+                                     .collect(Collectors.toList());
     }
 }

@@ -1,5 +1,6 @@
 package com.example.webbook.domain.entity;
 
+import com.example.user.dto.GetWebBookChaptersResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,4 +36,14 @@ public class WebBookChapter extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private WebBook webBook;
+
+    public GetWebBookChaptersResponseDto from() {
+        return GetWebBookChaptersResponseDto.builder()
+                                            .episode(episode)
+                                            .title(title)
+                                            .description(description)
+                                            .price(price)
+                                            .build();
+    }
 }
+

@@ -23,7 +23,7 @@ public class Reader extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "registration_number")
+    @Column(name = "registration_number", unique = true)
     private String registrationNumber;
 
 }

@@ -1,5 +1,6 @@
 package com.example.webbook.domain.entity;
 
+import com.example.webbook.dto.GetAllWebBooksResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,4 +31,12 @@ public class WebBook extends BaseEntity {
 
     @Column(name = "writer_id")
     private Long writer;
+
+    public GetAllWebBooksResponseDto from() {
+        return GetAllWebBooksResponseDto.builder()
+                                        .title(title)
+                                        .description(description)
+                                        .writer(writer)
+                                        .build();
+    }
 }
