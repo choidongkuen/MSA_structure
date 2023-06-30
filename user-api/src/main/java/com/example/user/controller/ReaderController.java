@@ -1,6 +1,8 @@
 package com.example.user.controller;
 
 import com.example.user.dto.RegisterReaderRequestDto;
+import com.example.user.dto.WebBookChapterPayRequestDto;
+import com.example.user.dto.WebBookChapterPayResponseDto;
 import com.example.user.service.ReaderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,5 +39,16 @@ public class ReaderController {
     public ResponseEntity<Object> getAllWebBooksAndWebBookChapters() {
         return new ResponseEntity<>(
                 this.readerService.getAllWebBooksAndWebBookChapters(), HttpStatus.OK);
+    }
+
+    @Operation(summary = "[독자 웹 소설 챕터 결재 컨트롤러]", description = "[This is a readerPayWebBooChapterController]")
+    @PostMapping("/{readerId}/payment")
+    public ResponseEntity<WebBookChapterPayResponseDto> readerPayWebBookChapter(
+            @PathVariable(value = "readerId") Long readerId,
+            @RequestBody WebBookChapterPayRequestDto request
+    ) {
+        return new ResponseEntity<>(
+                this.readerService.readerPayWebBookChapter(readerId, request), HttpStatus.CREATED);
+
     }
 }

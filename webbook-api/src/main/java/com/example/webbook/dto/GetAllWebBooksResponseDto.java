@@ -1,6 +1,5 @@
 package com.example.webbook.dto;
 
-import com.example.user.dto.GetWebBookChaptersResponseDto;
 import lombok.*;
 
 import java.util.List;
@@ -11,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllWebBooksResponseDto {
+
 
     private String title;
 

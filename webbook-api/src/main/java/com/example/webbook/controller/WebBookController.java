@@ -1,5 +1,6 @@
 package com.example.webbook.controller;
 
+import com.example.webbook.dto.GetWebBookChaptersResponseDto;
 import com.example.webbook.dto.RegisterWebBookChapterRequestDto;
 import com.example.webbook.dto.RegisterWebBookRequestDto;
 import com.example.webbook.service.WebBookService;
@@ -39,5 +40,12 @@ public class WebBookController {
     @GetMapping("/reader/webBooks")
     public ResponseEntity<Object> getAllWebBooksAndWebBookChapter() {
         return new ResponseEntity<>(this.webBookService.getAllWebBooksAndWebBookChapter(), HttpStatus.OK);
+    }
+
+    @GetMapping("{webBookId}/detail")
+    public ResponseEntity<GetWebBookChaptersResponseDto> getWebBookChapterDetail(
+            @PathVariable(value = "webBookId") Long webBookId
+    ) {
+        return new ResponseEntity<>(this.webBookService.getWebBookChapterDetail(webBookId), HttpStatus.OK);
     }
 }

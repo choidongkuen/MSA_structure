@@ -3,6 +3,7 @@ package com.example.user.client;
 import com.example.user.client.dto.RegisterWebBookChapterRequestClientDto;
 import com.example.user.client.dto.RegisterWebBookRequestClientDto;
 import com.example.user.dto.GetAllWebBooksResponseDto;
+import com.example.user.dto.GetWebBookChaptersResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,5 +24,10 @@ public interface WebBookClient {
 
     @GetMapping("/reader/webBooks")
     List<GetAllWebBooksResponseDto> getAllWebBooksAndWebBookChapters();
+
+    @GetMapping("{webBookId}/detail")
+    List<GetWebBookChaptersResponseDto> getWebBookChapterDetail(
+            @PathVariable(value = "webBookId") Long webBookId
+    );
 }
 

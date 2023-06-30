@@ -5,6 +5,7 @@ import com.example.webbook.domain.entity.WebBookChapter;
 import com.example.webbook.domain.repository.WebBookChapterRepository;
 import com.example.webbook.domain.repository.WebBookRepository;
 import com.example.webbook.dto.GetAllWebBooksResponseDto;
+import com.example.webbook.dto.GetWebBookChaptersResponseDto;
 import com.example.webbook.dto.RegisterWebBookChapterRequestDto;
 import com.example.webbook.dto.RegisterWebBookRequestDto;
 import com.example.webbook.exception.ErrorCode;
@@ -60,5 +61,13 @@ public class WebBookService {
                                                                                                                        .collect(Collectors.toList()))
                                                                               .build())
                                      .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public GetWebBookChaptersResponseDto getWebBookChapterDetail(Long webBookId) {
+        WebBookChapter webBookChapter = this.webBookChapterRepository.findById(webBookId)
+                                                                     .orElseThrow(() -> new WebBookException(ErrorCode.WEB_BOOK_CHAPTER_NOT_FOUND));
+
+        return webBookChapter.from();
     }
 }
