@@ -5,6 +5,7 @@ import com.example.webbook.dto.RegisterWebBookChapterRequestDto;
 import com.example.webbook.dto.RegisterWebBookRequestDto;
 import com.example.webbook.service.WebBookService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @RequiredArgsConstructor
+@Tag(name = "WebBook", description = "웹 소설(WebBook) api document")
 @RestController
 public class WebBookController {
 
@@ -42,9 +44,10 @@ public class WebBookController {
         return new ResponseEntity<>(this.webBookService.getAllWebBooksAndWebBookChapter(), HttpStatus.OK);
     }
 
-    @GetMapping("{webBookId}/detail")
+    @Operation(summary = "[특정 웹 소설 챕터 상세 조회 컨트롤러]", description = "[This is a getWebBookChapterDetailController]")
+    @GetMapping("{chapterId}/detail")
     public ResponseEntity<GetWebBookChaptersResponseDto> getWebBookChapterDetail(
-            @PathVariable(value = "webBookId") Long webBookId
+            @PathVariable(value = "chapterId") Long webBookId
     ) {
         return new ResponseEntity<>(this.webBookService.getWebBookChapterDetail(webBookId), HttpStatus.OK);
     }
