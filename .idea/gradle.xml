@@ -8,8 +8,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/gateway" />
             <option value="$PROJECT_DIR$/monolithic" />
-            <option value="$PROJECT_DIR$/msa" />
+            <option value="$PROJECT_DIR$/payment-api" />
+            <option value="$PROJECT_DIR$/user-api" />
+            <option value="$PROJECT_DIR$/webbook-api" />
           </set>
         </option>
       </GradleProjectSettings>

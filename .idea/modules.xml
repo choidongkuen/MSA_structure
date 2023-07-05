@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/monolithic/novel.monolithic.main.iml" filepath="$PROJECT_DIR$/.idea/modules/monolithic/novel.monolithic.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/msa/novel.msa.main.iml" filepath="$PROJECT_DIR$/.idea/modules/msa/novel.msa.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-api/novel.payment-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-api/novel.payment-api.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-api/novel.user-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/user-api/novel.user-api.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webbook-api/novel.webbook-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/webbook-api/novel.webbook-api.main.iml" />
     </modules>
   </component>
 </project>
