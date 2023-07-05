@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Slf4j
 @Getter
@@ -23,9 +20,15 @@ public class ReaderWebBookChapter extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "reader_id")
     private Long readerId;
 
+    @Column(name = "chapter_id")
     private Long webBookChapterId;
 
-    private Integer paymentAmount;
+    @Column(name = "payment_id")
+    private Long paymentId;
+
+    @Column(name = "amount")
+    private Long paymentAmount;
 }

@@ -39,16 +39,16 @@ public class WebBookController {
     }
 
     @Operation(summary = "[모든 웹 소설 및 웹 소설 챕터 조회 컨트롤러]", description = "[This is a getAllWebBooksAndWebBookChapterController]")
-    @GetMapping("/reader/webBooks")
+    @GetMapping("/webBooks")
     public ResponseEntity<Object> getAllWebBooksAndWebBookChapter() {
         return new ResponseEntity<>(this.webBookService.getAllWebBooksAndWebBookChapter(), HttpStatus.OK);
     }
 
     @Operation(summary = "[특정 웹 소설 챕터 상세 조회 컨트롤러]", description = "[This is a getWebBookChapterDetailController]")
-    @GetMapping("{chapterId}/detail")
+    @GetMapping("/{chapterId}/detail")
     public ResponseEntity<GetWebBookChaptersResponseDto> getWebBookChapterDetail(
-            @PathVariable(value = "chapterId") Long webBookId
+            @PathVariable(value = "chapterId") Long chapterId
     ) {
-        return new ResponseEntity<>(this.webBookService.getWebBookChapterDetail(webBookId), HttpStatus.OK);
+        return new ResponseEntity<>(this.webBookService.getWebBookChapterDetail(chapterId), HttpStatus.OK);
     }
 }

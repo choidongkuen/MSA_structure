@@ -3,10 +3,13 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3304/web_books_payments?useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
     username: root
-    password: msa
-    url: jdbc:mysql://localhost:3304/users?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    password: ${DATABASE_PASSWORD}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   jpa:
     properties:
       hibernate:

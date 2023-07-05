@@ -15,5 +15,5 @@ public class GetWebBookChaptersResponseDto {
 
     private String description;
 
-    private Integer price;
+    private Long price;
 }

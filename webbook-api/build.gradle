@@ -1,5 +1,5 @@
 dependencies {
-    implementation(project(":user-api"))
+//    implementation(project(":user-api"))
 }
 
 test {

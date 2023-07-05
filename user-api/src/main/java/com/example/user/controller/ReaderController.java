@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.dto.GetWebBookChaptersResponseDto;
 import com.example.user.dto.RegisterReaderRequestDto;
 import com.example.user.dto.WebBookChapterPayRequestDto;
 import com.example.user.dto.WebBookChapterPayResponseDto;
@@ -41,14 +42,24 @@ public class ReaderController {
                 this.readerService.getAllWebBooksAndWebBookChapters(), HttpStatus.OK);
     }
 
-    @Operation(summary = "[독자 웹 소설 챕터 결재 컨트롤러]", description = "[This is a readerPayWebBooChapterController]")
-    @PostMapping("/{readerId}/payment")
+    @Operation(summary = "[독자 특정 웹 소설 챕터 상세 조회 컨트롤러]", description = "[This is a readerGetWebBookChapterDetail]")
+    @GetMapping("/{chapterId}/detail")
+    public ResponseEntity<GetWebBookChaptersResponseDto> getWebBookChapterDetail(
+            @PathVariable(name = "chapterId") Long webBookId
+    ) {
+        return new ResponseEntity<>(
+                this.readerService.getWebBookChapterDetail(webBookId), HttpStatus.OK
+        );
+    }
+
+    @Operation(summary = "[독자 웹 소설 챕터 결제 컨트롤러]", description = "[This is a readerPayWebBooChapterController]")
+    @PostMapping("/{chapterId}/payment")
     public ResponseEntity<WebBookChapterPayResponseDto> readerPayWebBookChapter(
-            @PathVariable(value = "readerId") Long readerId,
+            @PathVariable(value = "chapterId") Long chapterId,
             @RequestBody WebBookChapterPayRequestDto request
     ) {
         return new ResponseEntity<>(
-                this.readerService.readerPayWebBookChapter(readerId, request), HttpStatus.CREATED);
-
+                this.readerService.readerPayWebBookChapter(chapterId, request), HttpStatus.CREATED
+        );
     }
 }

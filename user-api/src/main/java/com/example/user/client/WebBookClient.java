@@ -22,12 +22,12 @@ public interface WebBookClient {
             @PathVariable(name = "webBookId") Long webBookId,
             @RequestBody RegisterWebBookChapterRequestClientDto request);
 
-    @GetMapping("/reader/webBooks")
+    @GetMapping("/webBooks")
     List<GetAllWebBooksResponseDto> getAllWebBooksAndWebBookChapters();
 
-    @GetMapping("{webBookId}/detail")
-    List<GetWebBookChaptersResponseDto> getWebBookChapterDetail(
-            @PathVariable(value = "webBookId") Long webBookId
+    @GetMapping("/{chapterId}/detail")
+    GetWebBookChaptersResponseDto getWebBookChapterDetail(
+            @PathVariable(value = "chapterId") Long chapterId
     );
 }
 

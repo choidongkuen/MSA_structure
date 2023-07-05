@@ -22,7 +22,7 @@ public class WebBookChapterPayResponseDto {
     // 웹 소설 챕터 아이디
     private Long webBookChapterId;
     // 웹 소설 챕터
-    private Long title;
+    private String title;
 
     private String description;
 

@@ -2,6 +2,8 @@ package com.example.user.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @Builder
@@ -9,8 +11,12 @@ import lombok.*;
 @NoArgsConstructor
 public class WebBookChapterPayRequestDto {
 
-    private Long webBookChapterId;
+    @NotNull
+    private Long readerId;
 
-    private Integer amount;
+    @NotNull
+    private Long writerId;
 
+    @NotNull
+    private Long amount;
 }

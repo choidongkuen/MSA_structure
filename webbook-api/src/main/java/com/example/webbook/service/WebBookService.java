@@ -64,8 +64,8 @@ public class WebBookService {
     }
 
     @Transactional(readOnly = true)
-    public GetWebBookChaptersResponseDto getWebBookChapterDetail(Long webBookId) {
-        WebBookChapter webBookChapter = this.webBookChapterRepository.findById(webBookId)
+    public GetWebBookChaptersResponseDto getWebBookChapterDetail(Long chapterId) {
+        WebBookChapter webBookChapter = this.webBookChapterRepository.findById(chapterId)
                                                                      .orElseThrow(() -> new WebBookException(ErrorCode.WEB_BOOK_CHAPTER_NOT_FOUND));
 
         return webBookChapter.from();
