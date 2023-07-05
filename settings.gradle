@@ -3,4 +3,5 @@ include 'monolithic'
 include 'user-api'
 include 'payment-api'
 include 'webbook-api'
+include 'gateway'
 
